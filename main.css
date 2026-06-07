@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+}
+body {
+    background-color: #0f172a;
+}
+.whole-shit {
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    height: 100vh;
+}
+.calc {
+    display: flex;
+    flex-direction: column;
+    gap:12px ;
+    border-radius: 14px;
+    padding: 10px;
+    background-color: #0a0e1a;
+    max-width: 30vh;
+    max-height: 50vh;
+}
+.screen {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    background-color: #0a0e1a;
+    color: #F5F7FA;
+    font-size: 24px;
+    align-items: flex-end;
+}
+.board {
+    border-radius: 12px;
+    background-color: #334155;
+    flex-grow: 1;
+    padding: 12px;
+}
+button {
+    padding: 6px;
+    width:56px;
+    height: 53px;
+    border-radius: 28px;
+    margin: 3px;
+    font-size: 18px;
+    font-weight:900;
+    background-color: #E2E8F0;
+    color: #0F172A;
+    border: 1px solid #B8C2CE;
+    box-shadow:
+    0 2px 4px rgba(0,0,0,0.10),
+    0 1px 2px rgba(0,0,0,0.06);
+}
+.operator {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+.first-sec {
+    display: flex;
+}
+#clear,#backspace {
+    flex-grow: 1;
+}
+#clear {
+    background-color:#EF4444;
+    color: rgb(210, 253, 253);
+}
+.second-sec {
+    display: flex;
+}
+.third-sec {
+    display: flex;
+}
+.fourth-sec {
+    display: flex;
+}
+.fifth-sec {
+    display: flex;
+}
+#equal {
+    background-color: #10B981;
+    color: #FFFFFF;
+}
