@@ -46,14 +46,27 @@ button {
     background-color: #E2E8F0;
     color: #0F172A;
     border: 1px solid #B8C2CE;
-    box-shadow:
-    0 2px 4px rgba(0,0,0,0.10),
-    0 1px 2px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.3s ease;
+}
+button:hover {
+    background: #a8b1bd;
+    transform: scale(1.05);
+}
+button:active {
+  transform: scale(0.95);
 }
 .operator {
     background-color: #3B82F6;
     color: #FFFFFF;
     font-size: 24px;
+}
+.operator:hover {
+    background: #4338ca;
+    transform: scale(1.05);
+}
+.operator:active {
+  transform: scale(0.95);
 }
 .first-sec {
     display: flex;
@@ -64,6 +77,13 @@ button {
 #clear {
     background-color:#EF4444;
     color: rgb(210, 253, 253);
+}
+#clear:hover {
+    background: #ba1414;
+    transform: scale(1.05);
+}
+#clear:active {
+    transform: scale(.99995);
 }
 .second-sec {
     display: flex;
@@ -80,4 +100,11 @@ button {
 #equal {
     background-color: #10B981;
     color: #FFFFFF;
+}
+#equal:hover {
+    background: #047857;
+    transform: scale(1.05);
+}
+#equal:active {
+  transform: scale(0.95);
 }
