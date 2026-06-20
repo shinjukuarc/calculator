@@ -24,6 +24,32 @@ function appendToCalc(input,display) {
     display.textContent+=input
 }
 
+function maxLength(num1,num2) {
+    return (num1===20 && num2===20)
+}
+function undefinedOrNaN(num) {
+    return (num==='undefined' || num==='NaN')
+}
+function undefinedAndNaN(num) {
+    return (num!=='undefined' && num!=='NaN')
+}
+
+function clearAll() {
+    screen.textContent=''
+    num1='', operator='', num2=''
+    stage=1
+    result=''
+}
+function signChange(num) {
+    if (+num>0) {
+        return '-'+num
+    } else if (+num<0) {
+        return num.slice(1)
+    } else {
+        return num
+    }
+}
+
 //main code here
 
 const backSpace = document.querySelector('#backspace') 
@@ -33,40 +59,56 @@ const operators = document.querySelectorAll('.operator')
 const numbers = document.querySelectorAll('.num')
 const calculator = document.querySelector('.calc')
 const screen = document.querySelector('.screen')
+const sign = document.querySelector('.sign')
 
 let stage=1
 let result
 
 numbers.forEach(element=> {
     element.addEventListener('click', ()=> {
-        if ((stage===1 || stage===3) && (num1!=='undefined' && num1!=='NaN')) {
-            appendToCalc(element.textContent, screen);
-            (stage===1) ? num1+=element.textContent : num2+=element.textContent
-        } else if (num1==='undefined' || num1==='NaN') {
+        let digit=element.textContent
+        if (undefinedOrNaN(num1)) {
             screen.textContent=''
-            appendToCalc(element.textContent, screen);
-            (stage===1) ? num1=element.textContent : num2=element.textContent
+            num1='', num2=''
         }
+        if (stage===1) {
+            if (num1!=='0') {
+                appendToCalc(digit,screen)
+                num1+=digit
+            } else {
+                num1=digit
+            }
+        }
+        if (stage===2) {
+            if (num2!=='0') {
+                appendToCalc(digit,screen)
+                num2+=digit
+            } else {
+                num2=digit
+            }
+        }
+        screen.textContent=num1+operator+num2
     })
 })
 operators.forEach(element=> {
     element.addEventListener('click', ()=> {
-        if ((stage===1 && num1!=='') && (num1!=='undefined' && num1!=='NaN')) {
-            appendToCalc(element.textContent, screen)
-            stage=3
-            operator=element.textContent
+        let digit=element.textContent
+        if ((stage===1 && num1!=='') && (undefinedAndNaN(num1))) {
+            appendToCalc(digit, screen)
+            stage=2
+            operator=digit
         }
     })
 })
 backSpace.addEventListener('click', (e)=> {
-    if (stage===3 && num2!=='') {
+    if (stage===2 && num2!=='') {
         num2=num2.slice(0,-1)
-    } else if (stage===3 && num2==='') {
+    } else if (stage===2 && num2==='') {
         operator=''
         stage=1
-    } else if (stage===1 && (num1!=='undefined' && num1!=='NaN' && num1!=='Infinity')) {
+    } else if (stage===1 && (undefinedAndNaN(num1) && num1!=='Infinity')) {
         num1=num1.slice(0,-1)
-    } else if (num1==='undefined' || num1==='NaN') {
+    } else if (undefinedOrNaN(num1)) {
         num1=''
     }
     screen.textContent=num1+operator+num2
@@ -84,4 +126,15 @@ equal.addEventListener('click', ()=> {
         stage=1
         operator='', num2=''
     }
+})
+clear.addEventListener('click', ()=> {
+    clearAll()
+})
+sign.addEventListener('click', ()=> {
+    if (stage===1) {
+        num1=signChange(num1)
+    } else if (stage===2) {
+        num2=signChange(num2)
+    }
+    screen.textContent = num1 + operator + num2
 })
