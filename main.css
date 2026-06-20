@@ -22,12 +22,14 @@ body {
 }
 .screen {
     display: flex;
-    width: 100%;
-    height: 5vh;
+    margin-top: 2px;
+    height: 28px;
     background-color: #0a0e1a;
     color: #F5F7FA;
-    font-size: 24px;
+    font-size: 28px;
     align-items: flex-end;
+    border-radius: 9px;
+    padding: 4px;
 }
 .board {
     border-radius: 12px;
@@ -83,7 +85,7 @@ button:active {
     transform: scale(1.05);
 }
 #clear:active {
-    transform: scale(.99995);
+    transform: scale(.995);
 }
 .second-sec {
     display: flex;
