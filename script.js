@@ -49,7 +49,17 @@ function signChange(num) {
         return num
     }
 }
+function addDigitToNumber(num, digit) {
+    if (digit === '.' && num.includes('.')) return num;
 
+    if (digit === '.' && num === '') return '0.';
+
+    if (num === '0' && digit === '0') return '0';
+
+    if (num === '0' && digit !== '.') return digit;
+
+    return num + digit;
+}
 //main code here
 
 const backSpace = document.querySelector('#backspace') 
@@ -72,20 +82,12 @@ numbers.forEach(element=> {
             num1='', num2=''
         }
         if (stage===1) {
-            if (num1!=='0') {
-                appendToCalc(digit,screen)
-                num1+=digit
-            } else {
-                num1=digit
-            }
+            appendToCalc(digit,screen)
+            num1=addDigitToNumber(num1,digit)
         }
         if (stage===2) {
-            if (num2!=='0') {
-                appendToCalc(digit,screen)
-                num2+=digit
-            } else {
-                num2=digit
-            }
+            appendToCalc(digit,screen)
+            num2=addDigitToNumber(num2,digit)
         }
         screen.textContent=num1+operator+num2
     })
