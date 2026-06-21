@@ -63,6 +63,13 @@ function addDigitToNumber(num, digit) {
 function formatResult(num) {
     return Number(num.toPrecision(12)).toString();
 }
+function convertKey(key) {
+    if (key==='-') return '−'
+    if (key==='/') return '÷'
+    if (key==='*') return '×'
+    if (key==='+') return key
+}
+
 //main code here
 
 const backSpace = document.querySelector('#backspace') 
@@ -73,6 +80,7 @@ const numbers = document.querySelectorAll('.num')
 const calculator = document.querySelector('.calc')
 const screen = document.querySelector('.screen')
 const sign = document.querySelector('.sign')
+const all = document.querySelectorAll('*')
 
 let stage=1
 let result
@@ -148,4 +156,27 @@ sign.addEventListener('click', ()=> {
     }
     screen.textContent = num1 + operator + num2
     screen.scrollLeft = 0
+})
+
+//Keyboard support
+
+document.addEventListener('keydown', (e)=> {
+    let key=e.key
+    numbers.forEach(element=> {
+        if (element.textContent===key) {
+            element.click()
+        }
+    })
+    operators.forEach(element=> {
+        if (element.textContent===convertKey(key)) {
+            element.click()
+        }
+    })
+    if (key==='Backspace') {
+        backSpace.click()
+    } else if (key==='Enter') {
+        equal.click()
+    } else if (key==='Escape') {
+        clear.click()
+    }
 })
