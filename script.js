@@ -24,8 +24,8 @@ function appendToCalc(input,display) {
     display.textContent+=input
 }
 
-function maxLength(num1,num2) {
-    return (num1===20 && num2===20)
+function maxLength(num) {
+    return (num<=8)
 }
 function undefinedOrNaN(num) {
     return (num==='undefined' || num==='NaN')
@@ -81,11 +81,11 @@ numbers.forEach(element=> {
             screen.textContent=''
             num1='', num2=''
         }
-        if (stage===1) {
+        if (stage===1 && maxLength(num1.length)) {
             appendToCalc(digit,screen)
             num1=addDigitToNumber(num1,digit)
         }
-        if (stage===2) {
+        if (stage===2 && maxLength(num2.length)) {
             appendToCalc(digit,screen)
             num2=addDigitToNumber(num2,digit)
         }
