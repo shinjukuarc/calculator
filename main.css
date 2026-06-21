@@ -23,13 +23,17 @@ body {
 .screen {
     display: flex;
     margin-top: 2px;
-    height: 28px;
+    min-height: 28px;
     background-color: #0a0e1a;
     color: #F5F7FA;
     font-size: 27px;
     align-items: flex-end;
     border-radius: 9px;
     padding: 4px;
+    overflow-x: auto;
+    overflow-y:visible;
+    white-space: nowrap;
+    scrollbar-width: none;
 }
 .board {
     border-radius: 12px;

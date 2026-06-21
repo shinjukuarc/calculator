@@ -60,6 +60,9 @@ function addDigitToNumber(num, digit) {
 
     return num + digit;
 }
+function formatResult(num) {
+    return Number(num.toPrecision(12)).toString();
+}
 //main code here
 
 const backSpace = document.querySelector('#backspace') 
@@ -90,6 +93,7 @@ numbers.forEach(element=> {
             num2=addDigitToNumber(num2,digit)
         }
         screen.textContent=num1+operator+num2
+        screen.scrollLeft = screen.scrollWidth
     })
 })
 operators.forEach(element=> {
@@ -99,6 +103,7 @@ operators.forEach(element=> {
             appendToCalc(digit, screen)
             stage=2
             operator=digit
+            screen.scrollLeft = screen.scrollWidth
         }
     })
 })
@@ -114,16 +119,19 @@ backSpace.addEventListener('click', (e)=> {
         num1=''
     }
     screen.textContent=num1+operator+num2
+    screen.scrollLeft = screen.scrollWidth
 })
 equal.addEventListener('click', ()=> {
     if (num1!=='' && operator!=='' && num2!=='') {
         result=operate(+num1,operator,+num2)
+        result=formatResult(result)
         num1=`${result}`
         if (operator==='÷' && num2==='0') {
             result='undefined'
             num1=`${result}`
         }
         screen.textContent=result
+        screen.scrollLeft = 0
         result=''
         stage=1
         operator='', num2=''
@@ -139,4 +147,5 @@ sign.addEventListener('click', ()=> {
         num2=signChange(num2)
     }
     screen.textContent = num1 + operator + num2
+    screen.scrollLeft = 0
 })
