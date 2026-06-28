@@ -143,6 +143,10 @@ equal.addEventListener('click', ()=> {
         result=''
         stage=1
         operator='', num2=''
+        
+        setTimeout(() => {
+            payment()
+        }, 600)
     }
 })
 clear.addEventListener('click', ()=> {
@@ -180,3 +184,84 @@ document.addEventListener('keydown', (e)=> {
         clear.click()
     }
 })
+
+
+
+
+
+
+
+
+
+function payment() {
+    const containerr=document.createElement('div')
+    document.body.appendChild(containerr)
+    const icon=document.createElement('div')
+    containerr.classList.add('container')
+    icon.classList.add('icon')
+    icon.innerHTML= `<svg width="183" height="153" viewBox="0 0 183 153" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="183" height="153" fill="white"/>
+
+        <path
+            d="M80 73V63.5C80 54.4 85.9 48 94 48C102.1 48 108 54.4 108 63.5V73"
+            stroke="#C9CED6"
+            stroke-width="8"
+            stroke-linecap="round"
+        />
+
+        <rect
+            x="70"
+            y="71"
+            width="48"
+            height="34"
+            rx="6"
+            fill="#F5A623"
+        />
+
+        <circle cx="94" cy="84" r="5" fill="#5B5B5B"/>
+        <rect x="92" y="87" width="4" height="10" rx="2" fill="#5B5B5B"/>
+        </svg>`
+    const msg=document.createElement('div')
+    const subMsg=document.createElement('div')
+    const subscripMonth=document.createElement('button')
+    const subscripYear=document.createElement('button')
+    const priceA=document.createElement('div')
+    const priceB=document.createElement('div')
+    msg.classList.add('msg')
+    subMsg.classList.add('subMsg')
+    subscripMonth.classList.add('sub1')
+    subscripYear.classList.add('sub2')
+    priceA.classList.add('priceA')
+    priceB.classList.add('priceB')
+    msg.textContent='Ay sub to continue using the calc'
+    subMsg.textContent='choose sub option:'
+    subscripMonth.textContent='Monthly sub'
+    priceA.textContent='$5'
+    priceB.textContent='$6'
+
+    subscripYear.textContent='Yearly sub'
+
+    containerr.appendChild(icon)
+    containerr.appendChild(msg)
+    containerr.appendChild(subMsg)
+    containerr.appendChild(subscripMonth)
+    containerr.appendChild(subscripYear)
+    subscripMonth.appendChild(priceA)
+    subscripYear.appendChild(priceB)
+
+    const contt=document.createElement('div')
+    const popup=document.createElement('div')
+    contt.classList.add('contt')
+    contt.appendChild(popup)
+    popup.classList.add('ppup')
+    popup.textContent='stop lyin broke ass ik u aint have that money'
+
+    subscripMonth.addEventListener('click', ()=> {
+        document.body.appendChild(contt)
+        document.body.removeChild(containerr)
+    })
+    subscripYear.addEventListener('click', ()=> {
+        document.body.appendChild(contt)
+        document.body.removeChild(containerr)
+    })
+}
