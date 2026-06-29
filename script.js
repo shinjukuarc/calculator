@@ -180,3 +180,33 @@ document.addEventListener('keydown', (e)=> {
         clear.click()
     }
 })
+
+//change theme button
+
+const themeBtn=document.querySelector('.theme')
+let themeNum = 1
+themeBtn.src = `./images/svg/theme-${themeNum}.svg`
+
+themeBtn.addEventListener('click', ()=> {
+    themeNum++
+
+    if (themeNum > 3) {
+        themeNum = 1
+    }
+
+    themeBtn.src = `./images/svg/theme-${themeNum}.svg`
+
+    switch(themeNum) {
+        case 1:
+            document.body.className = "";
+            break
+        case 2: 
+            document.body.className = "";
+            document.body.classList.add('crimson-chalk')
+            break
+        case 3:
+            document.body.className = "";
+            document.body.classList.add('rose-noir')
+            break
+    }
+})

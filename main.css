@@ -1,8 +1,97 @@
 * {
     margin: 0;
 }
+
+/**/
+
+:root {
+    --body-bg: #e4f0f6;
+
+    --calc-bg: #0a0f1e;
+    --board-bg: #111a30;
+
+    --screen-bg: #060a14;
+    --screen-text: #e4f0f6;
+    --screen-border: #263757;
+
+    --btn-bg: #e4f0f6;
+    --btn-text: #0a0f1e;
+    --btn-border: #b8c9d4;
+    --btn-hover: #c9dce6;
+
+    --operator-bg: #2f5f9f;
+    --operator-hover: #1f3f73;
+
+    --clear-bg: #d94a4a;
+    --clear-hover: #a83232;
+
+    --equal-bg: #5bbfba;
+    --equal-hover: #2f8f8a;
+}
+
+/**/
+
+
+/**/
+
+body.crimson-chalk {
+    --body-bg: #f2ead3;
+
+    --calc-bg: #3b0a16;
+    --board-bg: #5c1020;
+
+    --screen-bg: #fff8e7;
+    --screen-text: #3b0a16;
+    --screen-border: #8a1c32;
+
+    --btn-bg: #f7f1df;
+    --btn-text: #3b0a16;
+    --btn-border: #d6c7a1;
+    --btn-hover: #e4d6b5;
+
+    --operator-bg: #b91c1c;
+    --operator-hover: #7f1d1d;
+
+    --clear-bg: #dc2626;
+    --clear-hover: #991b1b;
+
+    --equal-bg: #854d0e;
+    --equal-hover: #713f12;
+}
+
+/**/
+
+/**/
+
+body.rose-noir {
+    --body-bg: #1a0a0a;
+
+    --calc-bg: #2a1014;
+    --board-bg: #3a171d;
+
+    --screen-bg: #120708;
+    --screen-text: #ffe4ec;
+    --screen-border: #e8729a;
+
+    --btn-bg: #fff1f5;
+    --btn-text: #1a0a0a;
+    --btn-border: #f5b7ca;
+    --btn-hover: #f8c8d7;
+
+    --operator-bg: #e8729a;
+    --operator-hover: #c94f78;
+
+    --clear-bg: #9f1239;
+    --clear-hover: #7f102f;
+
+    --equal-bg: #f9a8d4;
+    --equal-hover: #e8729a;
+}
+
+/**/
+
 body {
-    background-color: #0f172a;
+    background-color: var(--body-bg);
 }
 .whole-shit {
     display: flex;
@@ -16,16 +105,14 @@ body {
     gap:12px ;
     border-radius: 14px;
     padding: 10px;
-    background-color: #0a0e1a;
+    background-color: var(--calc-bg);
     max-width: 30vh;
     max-height: 50vh;
 }
 .screen {
     display: flex;
     margin-top: 2px;
-    min-height: 28px;
-    background-color: #0a0e1a;
-    color: #F5F7FA;
+    min-height: 32px;
     font-size: 27px;
     align-items: flex-end;
     border-radius: 9px;
@@ -34,10 +121,14 @@ body {
     overflow-y:visible;
     white-space: nowrap;
     scrollbar-width: none;
+    padding: 4px;
+    background-color: var(--screen-bg);
+    color: var(--screen-text);
+    border: 4px solid var(--screen-border)
 }
 .board {
     border-radius: 12px;
-    background-color: #334155;
+    background-color: var(--board-bg);
     flex-grow: 1;
     padding: 12px;
 }
@@ -49,26 +140,26 @@ button {
     margin: 3px;
     font-size: 18px;
     font-weight:900;
-    background-color: #E2E8F0;
-    color: #0F172A;
-    border: 1px solid #B8C2CE;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
     cursor: pointer;
     transition: transform 0.1s ease, background 0.3s ease;
 }
 button:hover {
-    background: #a8b1bd;
+    background: var(--btn-hover);
     transform: scale(1.05);
 }
 button:active {
   transform: scale(0.95);
 }
 .operator {
-    background-color: #3B82F6;
+    background-color: var(--operator-bg);
     color: #FFFFFF;
     font-size: 24px;
 }
 .operator:hover {
-    background: #4338ca;
+    background: var(--operator-hover);
     transform: scale(1.05);
 }
 .operator:active {
@@ -81,11 +172,11 @@ button:active {
     flex-grow: 1;
 }
 #clear {
-    background-color:#EF4444;
+    background-color: var(--clear-bg);
     color: rgb(210, 253, 253);
 }
 #clear:hover {
-    background: #ba1414;
+    background: var(--clear-hover);
     transform: scale(1.05);
 }
 #clear:active {
@@ -104,13 +195,55 @@ button:active {
     display: flex;
 }
 #equal {
-    background-color: #10B981;
+    background-color: var(--equal-bg);
     color: #FFFFFF;
 }
 #equal:hover {
-    background: #047857;
+    background: var(--equal-hover);
     transform: scale(1.05);
 }
 #equal:active {
   transform: scale(0.95);
+}
+
+/**/
+.theme-cont {
+    display: flex;
+    justify-content: flex-end;
+}
+.theme {
+    position: fixed;
+    width: 8rem;
+    padding: 0.5rem;
+}
+
+body,
+.calc,
+.board,
+.screen,
+button,
+.operator,
+#clear,
+#equal {
+    transition:
+        background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme {
+    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+}
+
+.theme:hover {
+    transform: scale(1.08);
+    filter: brightness(1.08);
+}
+
+.theme:active {
+    transform: scale(0.75);
+    opacity: 0.7;
+    filter: brightness(0.85);
 }

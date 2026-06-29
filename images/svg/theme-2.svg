@@ -1,0 +1,66 @@
+<svg id="theme-switcher" width="150" height="120" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- filled sections -->
+  <polygon
+    id="theme1"
+    points="60,12 60,53.6 24,74.35"
+    fill="#FFFFFF"
+  />
+
+  <polygon
+    id="theme2"
+    points="60,12 60,53.6 96,74.35"
+    fill="#DC143C"
+  />
+
+  <polygon
+    id="theme3"
+    points="24,74.35 60,53.6 96,74.35"
+    fill="#FFFFFF"
+  />
+
+ <text
+    x="69"
+    y="46"
+    fill="#FFFFFF"
+    font-size="13"
+    font-weight="700"
+    font-family="Arial, sans-serif"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    2
+  </text>
+
+  <!-- outer triangle -->
+  <polygon
+    points="60,12 24,74.35 96,74.35"
+    fill="none"
+    stroke="#444"
+    stroke-width="1.4"
+  />
+
+  <!-- solid divider lines, slightly longer than triangle -->
+  <line
+    x1="60" y1="4"
+    x2="60" y2="53.6"
+    stroke="#444"
+    stroke-width="1.4"
+    stroke-linecap="round"
+  />
+
+  <line
+    x1="18" y1="78"
+    x2="60" y2="53.6"
+    stroke="#444"
+    stroke-width="1.4"
+    stroke-linecap="round"
+  />
+
+  <line
+    x1="102" y1="78"
+    x2="60" y2="53.6"
+    stroke="#444"
+    stroke-width="1.4"
+    stroke-linecap="round"
+  />
+</svg>
